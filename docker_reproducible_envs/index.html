@@ -1,45 +1,306 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reset.min.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/theme/black.min.css" id=theme>
+	<title>Reprodiucible Environments with Docker</title>
+	<link rel="icon" type="image/ico" href="./favicon.ico" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/highlight/monokai.min.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Reveal js</section>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reset.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/theme/black.min.css" id=theme>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+		crossorigin="anonymous" />
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/highlight/monokai.min.css"
+		id="highlight-theme">
+	<style>
+		.console {
+			background: #444455;
+			color: #eeeeff;
+			font-family: monospace;
+			/* height: 120px; */
+			margin-top: 20px;
+			padding: 24px;
+			border-radius: 8px;
+			box-shadow: 5px 5px 15px 7px rgba(30, 144, 255, 0.4);
+			text-align: start;
+		}
+
+		.ps {
+			color: dodgerblue;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h3>
+					Reproducible Environments with Docker
+				</h3>
+				<h4>
+					Wesley Banfield
+				</h4>
+				<i class="fab fa-docker fa-3x" style="color: #498FDF;"></i>
+			</section>
+			<section>
+				<h3>
+					Plan
+				</h3>
+				<ol>
+					<li>
+						The need for reproducible computing
+					</li>
+					<li>
+						What is Docker?
+					</li>
+					<li>
+						Running your first container
+					</li>
+					<li>
+						Building your first container
+					</li>
+					<li>
+						Using Volumes
+					</li>
+					<li>
+						Using Docker Compose
+					</li>
+					<li>
+						Best Practices
+					</li>
+					<li>
+						Creating a Github Repository
+					</li>
+					<li>
+						Alternatives
+					</li>
+				</ol>
+			</section>
+			<section>
 				<section>
-					<section>Slide 1</section>
-					<section>Slide 2</section>
+					<h3>
+						The need for reproducible computing
+					</h3>
 				</section>
-			</div>
+				<section>
+					<div>
+						<img
+							src="https://media.springernature.com/w300/springer-static/image/art%3A10.1038%2F533452a/MediaObjects/41586_2016_Article_BF533452a_Figg_HTML.jpg?as=webp" />
+						</br>
+						<p style="text-align: center;font-size: 1.5rem;">
+							<a href="https://www.nature.com/articles/533452a">Baker 2016, Nature</a>
+						</p>
+					</div>
+				</section>
+				<section>
+					<h4>
+						How can we distribute code?
+					</h4>
+					<ul>
+						<li>
+							scripts, notebooks, NbViewer
+						</li>
+						<li>
+							Github, Bitbucket, GitLab, etc.
+						</li>
+					</ul>
+
+					<h4 style="margin-top: 2em;">
+						Difficulties
+					</h4>
+					<ul>
+						<li>
+							Read Only / Cached Version / Can't change data
+						</li>
+						<li>
+							Variations in code environment → different results or crashes
+						</li>
+						<li>
+							Code version in repo different to current version → Not the same as article
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						What is Docker?
+					</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Running your first container
+					</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Building your first container
+					</h3>
+				</section>
+				<section>
+					<h4>
+						Create a notebook
+					</h4>
+					In this example we are going to use a dummy notebook to show how to create reprodiucible figures. Please bear in mind that this is only a demo you can do the same steps with other notebooks OR code.
+					
+					<p>
+					Download the following notebook locally: <a href='https://github.com/WesleyTheGeolien/Presentations/raw/main/docker_reproducible_envs/demo_notebook.ipynb'>Click to Download</a>
+					</p>
+					<p>
+					Download the following data locally: <a href='https://github.com/WesleyTheGeolien/Presentations/raw/main/docker_reproducible_envs/paleotopo.nc'>Click to Download</a>
+					</p>
+				</section>
+				<section>
+					<h4>
+						Specifing the environment
+					</h4>
+					<div class="console">
+						<span class="ps">$</span>
+						pip freeze > requirements.txt
+						</br>
+						<span class="ps">$</span>
+						conda list --export > spec-file.txt
+						</br>
+						<span class="ps">$</span>
+						conda env export > environment.yml
+					</div>	
+				</section>
+				<section>
+					<h4>
+						Recreating the environment
+					</h4>
+					<div class="console">
+						<span class="ps">$</span>
+						pip install -r requirements.txt
+						</br>
+						<span class="ps">$</span>
+						conda create --name myenv --file spec-file.txt
+						</br>
+						<span class="ps">$</span>
+						conda env create -f environment.yml
+					</div>
+				</section>
+				<section>
+					<h4>
+						Additional Files
+					</h4>
+					<ul>
+						<li>
+							README.md
+						</li>
+						<li>
+							<a href="https://choosealicense.com">License</a>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Using Volumes
+					</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Using Docker Compose
+					</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Best Practices
+					</h3>
+				</section>
+				<section>
+					<ul>
+						<li>
+							Link to Repository directly and obtain a DOI for the repository.
+						</li>
+						<li>
+							Publish the image to a Docker Hub repository and provide link.
+						</li>
+						<li>
+							<strong>
+								Organize your research
+							</strong>
+							<ul style="columns: 2;">
+								<li>
+									Code
+								</li>
+								<li>
+									Notebooks
+								</li>
+								<li>
+									Data
+								</li>
+								<li>
+									Results
+								</li> 
+								<li>
+									License + Requirements + Dockerfile + README.md
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Creating a Github Repository
+					</h3>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>
+						Alternatives
+					</h3>
+					<ul>
+						<li>
+							MyBinder
+						</li>
+						<li>
+							Code Ocean - <a href='https://docs.google.com/presentation/d/17h_ylV84m_AY6-0uhYxFcI59nsiYoev4nTESUvoFlrA/edit?usp=sharing'>Workshop JupyterCon 2018 April Clyburne-Sherin, Code Ocean</a>
+						</li>
+					</ul>
+				</section>
+			</section>
 		</div>
+	</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/markdown/markdown.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/notes/notes.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/highlight/highlight.min.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-				autoSlide: 1500,
-				loop: true,
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/markdown/markdown.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/dist/reveal.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/notes/notes.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.0.2/plugin/highlight/highlight.min.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			// autoSlide: 1500,
+			// loop: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
