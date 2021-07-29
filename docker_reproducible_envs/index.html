@@ -410,7 +410,9 @@
 						<li>
 							<div class="console">
 								<span class="ps">$</span>
-								docker push YOUR_IMAGE_NAME
+								docker tag YOUR_IMAGE_NAME DOCKER_USERNAME/YOUR_IMAGE_NAME
+								<span class="ps">$</span>
+								docker push DOCKER_USERNAME/YOUR_IMAGE_NAME
 							</div>
 						</li>
 					</ul>
